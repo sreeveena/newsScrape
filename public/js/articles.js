@@ -14,7 +14,7 @@ $(function () {
           method: "GET",
           url: "/articles"
         }).then(function (data) {
-          
+
           fetchAndDisplayStoredArticles(data);
         });
       });
@@ -55,7 +55,7 @@ function fetchAndDisplaySavedArticles() {
 }
 
 // sleep time expects milliseconds
-function sleep (time) {
+function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
@@ -176,7 +176,7 @@ function displaySavedArticles(data) {
     var id = $(this).data("id");
     deleteArticle(id);
   });
-  
+
 
 }
 
@@ -187,8 +187,8 @@ function displayNotesList(id) {
     var notes = $("#notes" + id);
     notes.empty();
     var notesStr = "<table>";
-    if(data.notes.length > 0) {
-      for(var i = 0; i < data.notes.length; i++) {
+    if (data.notes.length > 0) {
+      for (var i = 0; i < data.notes.length; i++) {
         notesStr = notesStr + `
           <tr id="note${data.notes[i]._id}">
             <td><a href="javascript:fillNote('${data.notes[i]._id}','${id}')">${data.notes[i].title}</a></td>
@@ -207,7 +207,7 @@ function deleteNote(id) {
   $("#note" + id).remove();
   $.ajax("/notes/" + id, {
     type: "DELETE"
-  }).then(function(data) {
+  }).then(function (data) {
     console.log("Deleted the row");
   });
 }
@@ -218,39 +218,37 @@ function deleteArticle(id) {
   $("#savedArticleModal" + id).remove();
   $.ajax("/articles/" + id, {
     type: "DELETE"
-  }).then(function(data) {
+  }).then(function (data) {
     fetchAndDisplaySavedArticles();
   });
 }
 
-    // Function to add a note post notes to collections
+// Function to add a note post notes to collections
 function addNote(id) {
-    event.preventDefault();
-    var name = $("input[data-value=" + id + "]").val();
-    var body = $("textarea[data-text=" + id + "]").val();
+  event.preventDefault();
+  var name = $("input[data-value=" + id + "]").val();
+  var body = $("textarea[data-text=" + id + "]").val();
 
-    $.ajax("/articles/" + id + "/notes", {
-        type: "POST",
-        data: {
-            title: name,
-            body: body
-        }
-    }).then(function (data) {
-        $("input[data-value=" + id + "]").val("");
-        $("textarea[data-text=" + id + "]").val("");
-        displayNotesList(id);
-    })
+  $.ajax("/articles/" + id + "/notes", {
+    type: "POST",
+    data: {
+      title: name,
+      body: body
+    }
+  }).then(function (data) {
+    $("input[data-value=" + id + "]").val("");
+    $("textarea[data-text=" + id + "]").val("");
+    displayNotesList(id);
+  })
 }
 
-    // Route to get notes commented by user
-function fillNote(id,article) {
+// Route to get notes commented by user
+function fillNote(id, article) {
   $.ajax("/notes/" + id, {
-      type: "GET"
+    type: "GET"
   }).then(function (data) {
-      $("input[data-value=" + article + "]").val(data.title);
-      $("textarea[data-text=" + article + "]").val(data.body);
+    $("input[data-value=" + article + "]").val(data.title);
+    $("textarea[data-text=" + article + "]").val(data.body);
   })
 
 }
-
-
