@@ -40,7 +40,7 @@ router.get("/scrape", function(req, res) {
   //   console.log("Emptied the database");
   // });
 
-    axios.get("https://content.guardianapis.com/search?q=debates&api-key=9de03749-45a9-4fc5-9470-290f07c52983").then(function(news){
+    axios.get("https://content.guardianapis.com/search?api-key=9de03749-45a9-4fc5-9470-290f07c52983").then(function(news){
 
       db.Article.find({})
       .then(function(dbArticles) {
