@@ -118,7 +118,7 @@ function saveArticle(id) {
 function displaySavedArticles(data) {
   $(".my-container").empty();
   var table = "";
-  table = '<div class="row"><div class="col-md-2"></div><div class="col-md-8">';
+  table = '<div class="row"><div class="col-md-2"></div><div class="col-md-6">';
   var elementStr = "";
   for (var i = 0; i < data.length; i++) {
 
