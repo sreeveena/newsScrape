@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>News Scrape</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <title>News Scrape</title>
 </head>
+
 <body>
   <script src="js/articles.js"></script>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-          <a class="navbar-brand" href="/">Mongo Scraper</a>
+        <a class="navbar-brand" href="/">Mongo Scraper</a>
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav mr-auto">
-              <li class="nav-item"><button onclick="javascript:window.location='/'" type="button" class="btn btn-primary" >Home</button></li>
-              <!-- <li><a href="/saved">View Saved Articles</a></li> -->
-              <li class="nav-item"><button type="button" class="btn btn-primary" id="saved">View Saved Articles</button></li>
-              <li class="nav-item"><button type="button" class="btn btn-primary" id="scrape">Scrape New Articles</button></li>
-          </ul>
+      <div id="navbar1" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav mr-auto">
+          <!-- <li class="nav-item"><button onclick="javascript:window.location='/'" type="button" class="btn btn-primary" >Home</button></li> -->
+          <li class="nav-item"><button type="button" class="btn btn-primary" id="saved">View Saved Articles</button>
+          </li>
+          <li class="nav-item"><button type="button" class="btn btn-primary" id="scrape">Scrape New Articles</button>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
+
   <div class="modal fade" id="newScrapedArticles" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel"
-  aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -38,7 +41,7 @@
           </button>
         </div>
         <div class="modal-body">
-          
+
           <div id="scrapedNote"></div>
         </div>
         <div class="modal-footer">
@@ -47,11 +50,12 @@
     </div>
   </div>
 
-  <div><center><h3>Mongo Scrapper</h3></center></div>
+  <!-- <div><center><h3>Mongo Scrapper</h3></center></div> -->
   <div class="my-container">
-    
+
   </div>
-      
-    
+
+
 </body>
+
 </html>

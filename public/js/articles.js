@@ -1,6 +1,4 @@
 $(function () {
-
-  
   $("#scrape").on("click", function (event) {
     event.preventDefault();
     $.ajax({
@@ -75,13 +73,13 @@ function fetchAndDisplayStoredArticles() {
 function displayStoredArticles(data) {
   $(".my-container").empty();
   var table = "";
-  table = '<div class="row"><div class="col-md-2"></div><div class="col-md-6">';
+  table = '<div class="row"><div class="col-md-1"></div><div class="col-md-10">';
   var elementStr = "";
   for (var i = 0; i < data.length; i++) {
 
     elementStr = `
-    <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap" id="${data[i]._id}">
-      <div class="card-body">
+    <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap article" id="${data[i]._id}">
+      <div class="card-body article">
           <h5 class="card-title">${data[i].title}</h5>
           <p class="card-text" style="word-wrap: break-word"><a href="${data[i].link}">${data[i].link}</a></p>
           <p class="card-text text-wrap">${data[i].para}</p>
@@ -93,7 +91,7 @@ function displayStoredArticles(data) {
     table += elementStr;
   }
 
-  table = table + '</div><div class="col-md-2"></div></div>';
+  table = table + '</div><div class="col-md-1"></div></div>';
   $(".my-container").append(table);
   // Add a note button triggering a modal
   $(document).on("click", "#saveArticle-btn", function (event) {
@@ -118,13 +116,13 @@ function saveArticle(id) {
 function displaySavedArticles(data) {
   $(".my-container").empty();
   var table = "";
-  table = '<div class="row"><div class="col-md-2"></div><div class="col-md-6">';
+  table = '<div class="row"><div class="col-md-1"></div><div class="col-md-10">';
   var elementStr = "";
   for (var i = 0; i < data.length; i++) {
 
     elementStr = `
-    <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap" id="savedArticle${data[i]._id}">
-      <div class="card-body">
+    <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap article" id="savedArticle${data[i]._id}">
+      <div class="card-body article">
           <h5 class="card-title">${data[i].title}</h5>
           <p class="card-text" style="word-wrap: break-word"><a href="${data[i].link}">${data[i].link}</a></p>
           <p class="card-text text-wrap">${data[i].para}</p>
@@ -151,7 +149,7 @@ function displaySavedArticles(data) {
           </div>
           <div class="modal-footer">
             <h5 class="modal-title">Click the note to read or X to delete it</h5>
-            <button onclick="addNote('${data[i]._id}')" type="button" class="btn btn-secondary" >Save Note</button>
+            <button onclick="addNote('${data[i]._id}')" type="button" class="btn btn-primary" >Save Note</button>
           </div>
         </div>
       </div>
@@ -161,7 +159,7 @@ function displaySavedArticles(data) {
     table += elementStr;
   }
 
-  table = table + '</div><div class="col-md-2">.</div></div>';
+  table = table + '</div><div class="col-md-1">.</div></div>';
   $(".my-container").append(table);
 
   // Add a note button triggering a modal
