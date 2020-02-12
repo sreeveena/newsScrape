@@ -99,27 +99,6 @@ function fetchOneArticleAndSave(webUrl, webTitle, res, last) {
   });
 }
 
-// Fetch stored or saved article
-//   stored: /articles?saved=false
-//   saved:  /articles?saved=true
-router.get("/articles", function (req, res) {
-
-  var value = false;
-  if (req.query.saved) {
-    if (req.query.saved == "true") {
-      value = true;
-    }
-  }
-  db.Article.find({ saved: value })
-    .then(function (dbArticle) {
-
-      res.json(dbArticle);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
-});
-
 //Save an article
 router.put("/articles/:id", function (req, res) {
 
