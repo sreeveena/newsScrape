@@ -111,6 +111,9 @@ function addNote(id) {
   event.preventDefault();
   var name = $("input[data-value=" + id + "]").val();
   var body = $("textarea[data-text=" + id + "]").val();
+  if(name == ""||body == ""){
+    return;
+  }
 
   $.ajax("/articles/" + id + "/notes", {
     type: "POST",

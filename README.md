@@ -14,6 +14,7 @@ Express.js
 MongoDB
 Mongoose
 Cheerio
+handlebars
 
 Heroku link: https://powerful-spire-64617.herokuapp.com/
 
