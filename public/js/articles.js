@@ -1,4 +1,31 @@
+//Register on-click events for various buttons after loading of document
 $(function () {
+  $(document).on("click", "#saveArticle-btn", function (event) {
+    // event.preventDefault();
+    var id = $(this).data("id");
+    $("#" + id).remove();
+    saveArticle(id);
+  });
+
+  $(document).on("click", "#addNote-btn", function (event) {
+    // event.preventDefault();
+    var id = $(this).data("id");
+    $("#savedArticleModal" + id).modal("toggle");
+    displayNotesList(id);
+  });
+
+  // View note commented by user
+  $(document).on("click", "#del-btn", function (event) {
+    // event.preventDefault();
+    var id = $(this).data("id");
+    deleteArticle(id);
+  });
+
+  $(document).on("click", "#saved", function (event) {
+    event.preventDefault();
+    location.href = "/pages/saved";
+  });
+
   $("#scrape").on("click", function (event) {
     event.preventDefault();
     $.ajax({
@@ -9,31 +36,11 @@ $(function () {
       // Usage!
       sleep(5000).then(() => {
         // Do something after the sleep!
+        location.href = "/";
 
-        $.ajax({
-          method: "GET",
-          url: "/articles"
-        }).then(function (data) {
-
-          fetchAndDisplayStoredArticles(data);
-        });
       });
     });
   });
-
-  $("#saved").on("click", function (event) {
-    event.preventDefault();
-    $.ajax({
-      method: "GET",
-      url: "/articles?saved=true"
-    }).then(function (data) {
-
-      displaySavedArticles(data);
-
-    });
-  });
-
-  fetchAndDisplayStoredArticles();
 
 });
 

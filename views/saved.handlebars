@@ -1,0 +1,89 @@
+  <nav class="navbar navbar-inverse navbar-fixed-top text-center">
+    <div class="container"> <a href="/"><h3>Mongo Scraper</h3></a>
+    </div>
+  </nav>
+
+  <nav style="margin-top: 50px" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container ">
+      <div id="navbar1" class="navbar-collapse collapse">
+        
+        <ul class="nav navbar-nav ">
+          <li class="nav-item"><button type="button" class="btn btn-success " id="saved">View Saved Articles</button>
+          </li>
+          <li class="nav-item"><button type="button" class="btn btn-success" id="scrape">Scrape New Articles</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="modal fade" id="newScrapedArticles" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="titleScrapedModal"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div id="scrapedNote"></div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding-top: 100px" class="my-container">
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+
+        {{#each dbArticles}}
+
+          <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap article" id="savedArticle{{_id}}">
+            <div class="card-body article">
+              <h5 class="card-title">{{title}}</h5>
+              <p class="card-text" style="word-wrap: break-word"><a href="{{link}}">{{link}}</a></p>
+              <p class="card-text text-wrap">{{para}}</p>
+              <button type="button" class="btn btn-primary" id="addNote-btn" data-id="{{_id}}">Add Note</button>
+              <button type="button" class="btn btn-danger" id="del-btn" data-id="{{_id}}">Delete Article</button>
+            </div>
+          </div>
+
+          <div class="modal fade" id="savedArticleModal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="name" +"{{_id}}">Add a Note</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input class="form-control" type="text" placeholder="Enter title" data-value={{_id}}><br>
+                  <textarea class="form-control note text-dark" placeholder="Enter note text" rows="2" data-text={{_id}}></textarea>
+                  <br>
+                  <div id="notes{{_id}}"></div>
+                </div>
+                <div class="modal-footer">
+                  <h5 class="modal-title">Click the note to read or X to delete it</h5>
+                  <button onclick="addNote('{{_id}}')" type="button" class="btn btn-primary" >Save Note</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {{/each}}
+    
+
+      </div>
+      <div class="col-md-1">.</div>
+    </div>
+
+  </div>

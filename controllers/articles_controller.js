@@ -29,6 +29,34 @@ function saveOneArticle(webUrl, webTitle, response, res, last) {
   });
 }
 
+//Fetch stored (not-saved) articles and render it in HTML
+router.get("/", function (req, res) {
+
+  db.Article.find({saved: false})
+    .then(function (dbArticles) {
+      res.render('stored', {dbArticles});
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+
+});
+
+//Fetch stored (not-saved) articles and render it in HTML
+router.get("/pages/saved", function (req, res) {
+
+  db.Article.find({saved: true})
+    .then(function (dbArticles) {
+      res.render('saved', {dbArticles});
+    })
+    .catch(function (err) {
+      console.log(err);
+      res.json(err);
+    });
+
+});
+
 //Scrape new articles and save in database with saved attribute as false.
 router.get("/scrape", function (req, res) {
 

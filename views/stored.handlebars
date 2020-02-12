@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/style.css" />
-  <title>News Scrape</title>
-</head>
-
-<body>
-  <script src="js/articles.js"></script>
-  
   <nav class="navbar navbar-inverse navbar-fixed-top text-center">
-    <div class="container">
-        <a href="/"><h3>Mongo Scraper</h3></a>
+    <div class="container"> <a href="/"><h3>Mongo Scraper</h3></a>
     </div>
   </nav>
 
   <nav style="margin-top: 50px" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container ">
-      <!-- <div class="navbar-header">
-        <a class="navbar-brand" href="/">Mongo Scraper</a>
-      </div> -->
       <div id="navbar1" class="navbar-collapse collapse">
         
         <ul class="nav navbar-nav ">
@@ -57,8 +37,28 @@
       </div>
     </div>
   </div>
-  <div style="padding-top: 100px" class="my-container">
-  </div>
-</body>
 
-</html>
+  <div style="padding-top: 100px" class="my-container">
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+
+      {{#each dbArticles}} 
+
+        <div class="card d-inline-flex flex-row bd-highlight mb-3 text-wrap article" id="{{_id}}">
+          <div class="card-body article">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text" style="word-wrap: break-word"><a href="{{link}}">{{link}}</a></p>
+            <p class="card-text text-wrap">{{para}}</p>
+            <button type="button" class="btn btn-success" id="saveArticle-btn" data-id="{{_id}}">Save Article</button>
+          </div>
+        </div>
+
+      {{/each}}
+
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+  </div>
